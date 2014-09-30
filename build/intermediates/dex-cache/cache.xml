@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/classes-f34a10d573f2cd7a464bdeef864e3c1e4fb14af1.jar"
+        jar="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/exploded-aar/BookManagement2/volley/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="84cbaaf835cc3df9ca6a33ba20d25fec76ff16df"/>
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-72bd1ffd2c03e49a308cf4db370199a8e46a8ac7.jar"
+        jar="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/classes-2bb9cd2fcfab29e00aed73da83ee78992a91deb2.jar"
+        jar="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/gson-2.3-64c7e9b97e0f429007970dc630f0c98dc8703c03.jar"
+        jar="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/libs/gson-2.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce"/>
+    <item
+        dex="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/pre-dexed/debug/classes-1b308328a2e51e57090db4925dd3d1a2a8616e38.jar"
+        jar="/Users/ohsugiyasuhito/AndroidstudioProjects/BookManagement2/bookManagement/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+
+</pre-dex-items>

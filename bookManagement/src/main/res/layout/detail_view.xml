@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bookImageView"
+            android:contentDescription="@string/koneko"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/koneko" />
+
+        <Button
+            android:id="@+id/selectImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="75dp"
+            android:text="@string/add_image" />
+
+    </LinearLayout>
+	
+		<TextView
+		    android:id="@+id/textView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/book_name" />
+	
+		<EditText
+		    android:id="@+id/editBookName"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10" />
+		    
+		<TextView
+		    android:id="@+id/textView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/book_price" />
+	    
+	    <EditText
+	        android:id="@+id/editPrice"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:ems="10" 
+	        />
+	
+	    <TextView
+		    android:id="@+id/textView3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/book_date" />
+	    
+	    <EditText
+	        android:id="@+id/editDate"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:focusable="false"
+	        android:ems="10" 
+	        />
+
+	    <Button
+	        android:id="@+id/saveButton"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/save_button" />
+
+ </LinearLayout>
+    

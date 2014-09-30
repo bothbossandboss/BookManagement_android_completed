@@ -1,0 +1,467 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From BookManagement:
+* .DS_Store
+* .gitignore
+* build.gradle
+* eclipseAddLibrary/
+* eclipseAddLibrary/.DS_Store
+* eclipseAddLibrary/About Stacks.jar
+* eclipseAddLibrary/gson-2.3-javadoc.jar
+* eclipseAddLibrary/gson-2.3-sources.jar
+* eclipseAddLibrary/gson-2.3.jar
+* eclipseAddLibrary/volley/
+* eclipseAddLibrary/volley/.classpath
+* eclipseAddLibrary/volley/.git/
+* eclipseAddLibrary/volley/.git/HEAD
+* eclipseAddLibrary/volley/.git/config
+* eclipseAddLibrary/volley/.git/description
+* eclipseAddLibrary/volley/.git/hooks/
+* eclipseAddLibrary/volley/.git/hooks/applypatch-msg.sample
+* eclipseAddLibrary/volley/.git/hooks/commit-msg.sample
+* eclipseAddLibrary/volley/.git/hooks/post-update.sample
+* eclipseAddLibrary/volley/.git/hooks/pre-applypatch.sample
+* eclipseAddLibrary/volley/.git/hooks/pre-commit.sample
+* eclipseAddLibrary/volley/.git/hooks/pre-push.sample
+* eclipseAddLibrary/volley/.git/hooks/pre-rebase.sample
+* eclipseAddLibrary/volley/.git/hooks/prepare-commit-msg.sample
+* eclipseAddLibrary/volley/.git/hooks/update.sample
+* eclipseAddLibrary/volley/.git/index
+* eclipseAddLibrary/volley/.git/info/
+* eclipseAddLibrary/volley/.git/info/exclude
+* eclipseAddLibrary/volley/.git/logs/
+* eclipseAddLibrary/volley/.git/logs/HEAD
+* eclipseAddLibrary/volley/.git/logs/refs/
+* eclipseAddLibrary/volley/.git/logs/refs/heads/
+* eclipseAddLibrary/volley/.git/logs/refs/heads/master
+* eclipseAddLibrary/volley/.git/logs/refs/remotes/
+* eclipseAddLibrary/volley/.git/logs/refs/remotes/origin/
+* eclipseAddLibrary/volley/.git/logs/refs/remotes/origin/HEAD
+* eclipseAddLibrary/volley/.git/objects/
+* eclipseAddLibrary/volley/.git/objects/pack/
+* eclipseAddLibrary/volley/.git/objects/pack/pack-4eb3111d1501030a282d7fe51c08bd07ea9cf0df.idx
+* eclipseAddLibrary/volley/.git/objects/pack/pack-4eb3111d1501030a282d7fe51c08bd07ea9cf0df.pack
+* eclipseAddLibrary/volley/.git/packed-refs
+* eclipseAddLibrary/volley/.git/refs/
+* eclipseAddLibrary/volley/.git/refs/heads/
+* eclipseAddLibrary/volley/.git/refs/heads/master
+* eclipseAddLibrary/volley/.git/refs/remotes/
+* eclipseAddLibrary/volley/.git/refs/remotes/origin/
+* eclipseAddLibrary/volley/.git/refs/remotes/origin/HEAD
+* eclipseAddLibrary/volley/.gitignore
+* eclipseAddLibrary/volley/.project
+* eclipseAddLibrary/volley/Android.mk
+* eclipseAddLibrary/volley/AndroidManifest.xml
+* eclipseAddLibrary/volley/bin/
+* eclipseAddLibrary/volley/bin/AndroidManifest.xml
+* eclipseAddLibrary/volley/bin/classes/
+* eclipseAddLibrary/volley/bin/classes/com/
+* eclipseAddLibrary/volley/bin/classes/com/android/
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/AuthFailureError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/BuildConfig.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Cache$Entry.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Cache.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/CacheDispatcher$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/CacheDispatcher.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/DefaultRetryPolicy.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ExecutorDelivery$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ExecutorDelivery$ResponseDeliveryRunnable.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ExecutorDelivery.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Network.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/NetworkDispatcher.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/NetworkError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/NetworkResponse.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/NoConnectionError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ParseError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Request$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Request$Method.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Request$Priority.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Request.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/RequestQueue$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/RequestQueue$RequestFilter.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/RequestQueue.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Response$ErrorListener.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Response$Listener.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/Response.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ResponseDelivery.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/RetryPolicy.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/ServerError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/TimeoutError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/VolleyError.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/VolleyLog$MarkerLog$Marker.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/VolleyLog$MarkerLog.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/VolleyLog.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/AndroidAuthenticator.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/Authenticator.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/BasicNetwork.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ByteArrayPool$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ByteArrayPool.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ClearCacheRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/DiskBasedCache$CacheHeader.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/DiskBasedCache$CountingInputStream.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/DiskBasedCache.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HttpClientStack$HttpPatch.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HttpClientStack.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HttpHeaderParser.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HttpStack.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HurlStack$UrlRewriter.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/HurlStack.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$2.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$3.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$4.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$BatchedImageRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$ImageCache.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$ImageContainer.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader$ImageListener.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageLoader.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/ImageRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/JsonArrayRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/JsonObjectRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/JsonRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/NetworkImageView$1$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/NetworkImageView$1.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/NetworkImageView.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/NoCache.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/PoolingByteArrayOutputStream.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/RequestFuture.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/StringRequest.class
+* eclipseAddLibrary/volley/bin/classes/com/android/volley/toolbox/Volley.class
+* eclipseAddLibrary/volley/bin/volley.jar
+* eclipseAddLibrary/volley/build.gradle
+* eclipseAddLibrary/volley/build.xml
+* eclipseAddLibrary/volley/custom_rules.xml
+* eclipseAddLibrary/volley/gen/
+* eclipseAddLibrary/volley/gen/com/
+* eclipseAddLibrary/volley/gen/com/android/
+* eclipseAddLibrary/volley/gen/com/android/volley/
+* eclipseAddLibrary/volley/gen/com/android/volley/BuildConfig.java
+* eclipseAddLibrary/volley/proguard-project.txt
+* eclipseAddLibrary/volley/proguard.cfg
+* eclipseAddLibrary/volley/project.properties
+* eclipseAddLibrary/volley/src/
+* eclipseAddLibrary/volley/src/com/
+* eclipseAddLibrary/volley/src/com/android/
+* eclipseAddLibrary/volley/src/com/android/volley/
+* eclipseAddLibrary/volley/src/com/android/volley/AuthFailureError.java
+* eclipseAddLibrary/volley/src/com/android/volley/Cache.java
+* eclipseAddLibrary/volley/src/com/android/volley/CacheDispatcher.java
+* eclipseAddLibrary/volley/src/com/android/volley/DefaultRetryPolicy.java
+* eclipseAddLibrary/volley/src/com/android/volley/ExecutorDelivery.java
+* eclipseAddLibrary/volley/src/com/android/volley/Network.java
+* eclipseAddLibrary/volley/src/com/android/volley/NetworkDispatcher.java
+* eclipseAddLibrary/volley/src/com/android/volley/NetworkError.java
+* eclipseAddLibrary/volley/src/com/android/volley/NetworkResponse.java
+* eclipseAddLibrary/volley/src/com/android/volley/NoConnectionError.java
+* eclipseAddLibrary/volley/src/com/android/volley/ParseError.java
+* eclipseAddLibrary/volley/src/com/android/volley/Request.java
+* eclipseAddLibrary/volley/src/com/android/volley/RequestQueue.java
+* eclipseAddLibrary/volley/src/com/android/volley/Response.java
+* eclipseAddLibrary/volley/src/com/android/volley/ResponseDelivery.java
+* eclipseAddLibrary/volley/src/com/android/volley/RetryPolicy.java
+* eclipseAddLibrary/volley/src/com/android/volley/ServerError.java
+* eclipseAddLibrary/volley/src/com/android/volley/TimeoutError.java
+* eclipseAddLibrary/volley/src/com/android/volley/VolleyError.java
+* eclipseAddLibrary/volley/src/com/android/volley/VolleyLog.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/AndroidAuthenticator.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/Authenticator.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/BasicNetwork.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/ByteArrayPool.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/ClearCacheRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/DiskBasedCache.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/HttpClientStack.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/HttpHeaderParser.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/HttpStack.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/HurlStack.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/ImageLoader.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/ImageRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/JsonArrayRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/JsonObjectRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/JsonRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/NetworkImageView.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/NoCache.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/PoolingByteArrayOutputStream.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/RequestFuture.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/StringRequest.java
+* eclipseAddLibrary/volley/src/com/android/volley/toolbox/Volley.java
+* eclipseAddLibrary/volley/tests/
+* eclipseAddLibrary/volley/tests/.classpath
+* eclipseAddLibrary/volley/tests/.project
+* eclipseAddLibrary/volley/tests/.settings/
+* eclipseAddLibrary/volley/tests/.settings/org.eclipse.jdt.core.prefs
+* eclipseAddLibrary/volley/tests/Android.mk
+* eclipseAddLibrary/volley/tests/AndroidManifest.xml
+* eclipseAddLibrary/volley/tests/bin/
+* eclipseAddLibrary/volley/tests/bin/AndroidManifest.xml
+* eclipseAddLibrary/volley/tests/bin/R.txt
+* eclipseAddLibrary/volley/tests/bin/classes/
+* eclipseAddLibrary/volley/tests/bin/classes/com/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/CacheDispatcherTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/NetworkDispatcherTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestQueueTest$1.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestQueueTest$DelayedRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestQueueTest$OrderCheckingNetwork.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestQueueTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestTest$TestRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestTest$UrlParseRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/RequestTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/ResponseDeliveryTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockCache.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockHttpClient.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockHttpStack.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockHttpURLConnection.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockNetwork.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/MockResponseDelivery.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Base.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Delete.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedGet.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedPost.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Get.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Head.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Options.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Patch.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$PatchWithBody.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Post.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$PostWithBody.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Put.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$PutWithBody.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest$Trace.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/TestRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/WaitableQueue$MagicStopRequest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/mock/WaitableQueue.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/tests/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/tests/BuildConfig.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/tests/R$attr.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/tests/R$raw.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/tests/R.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest$1.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/ByteArrayPoolTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/DiskBasedCacheTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/HttpClientStackTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/HttpHeaderParserTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/HurlStackTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/ImageRequestTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest$MockImageLoader.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/toolbox/PoolingByteArrayOutputStreamTest.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/utils/
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/utils/CacheTestUtils.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery$1.class
+* eclipseAddLibrary/volley/tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery.class
+* eclipseAddLibrary/volley/tests/bin/volleytests.jar
+* eclipseAddLibrary/volley/tests/gen/
+* eclipseAddLibrary/volley/tests/gen/com/
+* eclipseAddLibrary/volley/tests/gen/com/android/
+* eclipseAddLibrary/volley/tests/gen/com/android/volley/
+* eclipseAddLibrary/volley/tests/gen/com/android/volley/tests/
+* eclipseAddLibrary/volley/tests/gen/com/android/volley/tests/BuildConfig.java
+* eclipseAddLibrary/volley/tests/gen/com/android/volley/tests/R.java
+* eclipseAddLibrary/volley/tests/project.properties
+* eclipseAddLibrary/volley/tests/res/
+* eclipseAddLibrary/volley/tests/res/raw/
+* eclipseAddLibrary/volley/tests/res/raw/large_jpeg_1024_500.jpg
+* eclipseAddLibrary/volley/tests/src/
+* eclipseAddLibrary/volley/tests/src/com/
+* eclipseAddLibrary/volley/tests/src/com/android/
+* eclipseAddLibrary/volley/tests/src/com/android/volley/
+* eclipseAddLibrary/volley/tests/src/com/android/volley/CacheDispatcherTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/NetworkDispatcherTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/RequestQueueTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/RequestTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/ResponseDeliveryTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockCache.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockHttpClient.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockHttpStack.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockHttpURLConnection.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockNetwork.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockRequest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/MockResponseDelivery.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/TestRequest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/mock/WaitableQueue.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/BasicNetworkTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/ByteArrayPoolTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/DiskBasedCacheTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/HttpClientStackTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/HttpHeaderParserTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/HurlStackTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/ImageRequestTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/NetworkImageViewTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/toolbox/PoolingByteArrayOutputStreamTest.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/utils/
+* eclipseAddLibrary/volley/tests/src/com/android/volley/utils/CacheTestUtils.java
+* eclipseAddLibrary/volley/tests/src/com/android/volley/utils/ImmediateResponseDelivery.java
+* ic_launcher-web.png
+* proguard-project.txt
+From Volley:
+* .gitignore
+* Android.mk
+* build.gradle
+* build.xml
+* custom_rules.xml
+* proguard-project.txt
+* proguard.cfg
+* tests/
+* tests/.classpath
+* tests/.project
+* tests/.settings/
+* tests/.settings/org.eclipse.jdt.core.prefs
+* tests/Android.mk
+* tests/bin/
+* tests/bin/AndroidManifest.xml
+* tests/bin/R.txt
+* tests/bin/classes/
+* tests/bin/classes/com/
+* tests/bin/classes/com/android/
+* tests/bin/classes/com/android/volley/
+* tests/bin/classes/com/android/volley/CacheDispatcherTest.class
+* tests/bin/classes/com/android/volley/NetworkDispatcherTest.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$1.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$DelayedRequest.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$OrderCheckingNetwork.class
+* tests/bin/classes/com/android/volley/RequestQueueTest.class
+* tests/bin/classes/com/android/volley/RequestTest$TestRequest.class
+* tests/bin/classes/com/android/volley/RequestTest$UrlParseRequest.class
+* tests/bin/classes/com/android/volley/RequestTest.class
+* tests/bin/classes/com/android/volley/ResponseDeliveryTest.class
+* tests/bin/classes/com/android/volley/mock/
+* tests/bin/classes/com/android/volley/mock/MockCache.class
+* tests/bin/classes/com/android/volley/mock/MockHttpClient.class
+* tests/bin/classes/com/android/volley/mock/MockHttpStack.class
+* tests/bin/classes/com/android/volley/mock/MockHttpURLConnection.class
+* tests/bin/classes/com/android/volley/mock/MockNetwork.class
+* tests/bin/classes/com/android/volley/mock/MockRequest.class
+* tests/bin/classes/com/android/volley/mock/MockResponseDelivery.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Base.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Delete.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedGet.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedPost.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Get.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Head.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Options.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Patch.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PatchWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Post.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PostWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Put.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PutWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Trace.class
+* tests/bin/classes/com/android/volley/mock/TestRequest.class
+* tests/bin/classes/com/android/volley/mock/WaitableQueue$MagicStopRequest.class
+* tests/bin/classes/com/android/volley/mock/WaitableQueue.class
+* tests/bin/classes/com/android/volley/tests/
+* tests/bin/classes/com/android/volley/tests/BuildConfig.class
+* tests/bin/classes/com/android/volley/tests/R$attr.class
+* tests/bin/classes/com/android/volley/tests/R$raw.class
+* tests/bin/classes/com/android/volley/tests/R.class
+* tests/bin/classes/com/android/volley/toolbox/
+* tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest$1.class
+* tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest.class
+* tests/bin/classes/com/android/volley/toolbox/ByteArrayPoolTest.class
+* tests/bin/classes/com/android/volley/toolbox/DiskBasedCacheTest.class
+* tests/bin/classes/com/android/volley/toolbox/HttpClientStackTest.class
+* tests/bin/classes/com/android/volley/toolbox/HttpHeaderParserTest.class
+* tests/bin/classes/com/android/volley/toolbox/HurlStackTest.class
+* tests/bin/classes/com/android/volley/toolbox/ImageRequestTest.class
+* tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest$MockImageLoader.class
+* tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest.class
+* tests/bin/classes/com/android/volley/toolbox/PoolingByteArrayOutputStreamTest.class
+* tests/bin/classes/com/android/volley/utils/
+* tests/bin/classes/com/android/volley/utils/CacheTestUtils.class
+* tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery$1.class
+* tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery.class
+* tests/bin/volleytests.jar
+* tests/gen/
+* tests/gen/com/
+* tests/gen/com/android/
+* tests/gen/com/android/volley/
+* tests/gen/com/android/volley/tests/
+* tests/gen/com/android/volley/tests/BuildConfig.java
+* tests/gen/com/android/volley/tests/R.java
+* tests/project.properties
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:20.0.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:20.0.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:20.0.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In Volley:
+* AndroidManifest.xml => volley/src/main/AndroidManifest.xml
+* assets/ => volley/src/main/assets/
+* res/ => volley/src/main/res/
+* src/ => volley/src/main/java/
+* tests/res/ => volley/src/androidTest/res/
+* tests/src/ => volley/src/androidTest/java/
+In BookManagement:
+* AndroidManifest.xml => bookManagement/src/main/AndroidManifest.xml
+* assets/ => bookManagement/src/main/assets/
+* lint.xml => bookManagement/lint.xml
+* res/ => bookManagement/src/main/res/
+* src/ => bookManagement/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
