@@ -1,5 +1,6 @@
 package com.myexample.bookmanagement;
 /*
+ * Android Studio version
  * 最初に呼ばれるactivityで2つのtabを持つ
  */
 import android.app.ActionBar;
