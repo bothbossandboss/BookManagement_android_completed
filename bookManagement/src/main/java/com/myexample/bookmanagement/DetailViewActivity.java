@@ -26,7 +26,10 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class DetailViewActivity extends Activity
-{
+    /**
+     * !!!! むやみにpublicにしない 特にViewは外部から安易に参照できるようにしない
+     * 継承先で使いたい場合はgetterメソッドをつくるかprotectedで宣言するかなどを検討しましょう
+     */
     public EditText editBookName;
     public EditText editPrice;
     public EditText editDate;
@@ -113,6 +116,10 @@ public class DetailViewActivity extends Activity
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
+        /**
+         * !!!! このifが無駄に分かれています
+         * まとめてください
+         */
         if(requestCode == MyConstants.REQUEST_CODE_SELECT_IMAGE)
         {
             if(resultCode == Activity.RESULT_OK && intent != null)
@@ -122,13 +129,23 @@ public class DetailViewActivity extends Activity
                 Log.d("image",""+uri);
                 imageUri = uri;
                 ImageController imageController = new ImageController(uri);
+                /**
+                 * ! Android Studioの警告で出てるけどthisのキャストが不要です
+                 */
                 bitmap = imageController.loadImage(MyConstants.IMAGE_VIEW_WIDTH, MyConstants.IMAGE_VIEW_HEIGHT,(Activity)this);
+                /**
+                 * ! 使ってないcanvas?
+                 */
                 canvas = new Canvas(bitmap);
                 imageView.setImageBitmap(bitmap);
             }
         }
     }
 
+    /**
+     * ! これはあんま気にしなくていいけど個人的にメソッド名が好きじゃないです
+     * 自分ならsetListener(s) setFocusChangeListenerとかそんな感じ
+     */
     /*
      * method to control text field
      */
@@ -153,6 +170,10 @@ public class DetailViewActivity extends Activity
         });
     }
 
+    /**
+     * ! 同上
+     * 上とまとめちゃってもいい気がする
+     */
     public void controlDatePicker(final EditText ed)
     {
         //keyboard非表示の為に、xmlファイルでandroid:focusable="false"が必要。

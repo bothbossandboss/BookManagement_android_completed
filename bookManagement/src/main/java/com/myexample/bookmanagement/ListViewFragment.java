@@ -40,13 +40,25 @@ import java.util.List;
 public class ListViewFragment extends Fragment {
     private List<ListViewItem> list;
     private ListView listView ;
+    /**
+     * !! mPrefixをつけるかはとりあえず好みでいいがどちらかに統一する
+     * prefixをつけるAndroid Studioの設定もあるのでぐぐるべし
+     */
     private RequestQueue mQueue;
     private CustomListItemAdapter adapter;
+    /**
+     * !!!!! tmpなどの一時変数はクラスに持たせない
+     * あるメソッドでしか使わないならそのメソッドのローカル変数として宣言する
+     * 変数の有効範囲(スコープ)はできるだけ小さくなるようにしたほうがバグが出にくい
+     */
     private int tmpID;
     private String tmpTitle;
     private String tmpPrice;
     private String tmpDate;
     private int tmpIndex;
+    /**
+     * ! 変数名が謎
+     */
     private String isThisFirstGet;
 
     /*
@@ -102,6 +114,12 @@ public class ListViewFragment extends Fragment {
                 Log.d("date:%s", date);
                 //DetailViewに遷移するためのインテントを作成する。
                 Intent intent = new Intent(getActivity(), DetailViewActivity.class);
+                /**
+                 * !!!!! マジックナンバーの廃止
+                 * key名が直接埋め込まれている(マジックナンバー)
+                 * 基本的にこのような定数もstatic finalなフィールドとして宣言すること。
+                 * バグの元です
+                 */
                 intent.putExtra("resourceID",ID);
                 intent.putExtra("bookName",title);
                 intent.putExtra("price",price);
@@ -111,12 +129,20 @@ public class ListViewFragment extends Fragment {
                 //遷移先から返却される識別コードを指定することで返却値を反映できる。
                 int requestCode = MyConstants.REQUEST_CODE_SAVE;
                 startActivityForResult(intent,requestCode);
+                /**
+                 * リクエストコードはちゃんと定数で宣言されてて良いです。
+                 */
             }
         });
     }
 
     private void showAlert(String msg)
     {
+        /**
+         * !! builderはメソッドチェーンできるので使いましょう。
+         * かっこいいです
+         * 現状は2行目だけチェーンされてて不思議な感じになっています
+         */
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(msg).setPositiveButton("OK", null);
         builder.show();
@@ -154,6 +180,11 @@ public class ListViewFragment extends Fragment {
 
     private void reloadMoreData()
     {
+        /**
+         * !!!!! マジックナンバー
+         * このクラスで読み込み書き込み1箇所ぐらいならとりあえず動作確認するぐらいのときは直接書いてもいいけど
+         * やっぱよくないです
+         */
         SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
         int numOfBooks = prefs.getInt("numOfBooks", 0);
         int beginPage = numOfBooks - list.size();
@@ -166,11 +197,15 @@ public class ListViewFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
+        /**
+         * !!! if分の入れ子(ネスト)が無駄に深いです。
+         * 読みにくくバグの元になるので連続していたらなにかいいかんじに出来ないか疑いましょう
+         */
         //編集して保存する場合。
-        if(requestCode == MyConstants.REQUEST_CODE_SAVE)
+        if(requestCode == MyConstants.REQUEST_CODE_SAVE && resultCode == Activity.RESULT_OK)
         {
-            if(resultCode == Activity.RESULT_OK)
-            {
+            // diff がアレなのでインデントは買えずに残してます(ホントはインデントもちゃんと変える)
+            // マジックナン(
                 super.onActivityResult(requestCode, resultCode, intent);
                 int resourceID = intent.getIntExtra("ID", 0);
                 int index = intent.getIntExtra("index", 0);
@@ -184,12 +219,9 @@ public class ListViewFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
-        }else if(requestCode == MyConstants.REQUEST_CODE_ADD)
+        }else if(requestCode == MyConstants.REQUEST_CODE_ADD && resultCode == Activity.RESULT_OK)
         {
-            //追加
-            if(resultCode == Activity.RESULT_OK)
-            {
+            // マジッ(
                 super.onActivityResult(requestCode, resultCode, intent);
                 String addTitle = intent.getStringExtra("bookName");
                 String addPrice = intent.getStringExtra("price");
@@ -201,7 +233,6 @@ public class ListViewFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
         }
     }
 
@@ -229,7 +260,14 @@ public class ListViewFragment extends Fragment {
                 new Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        /**
+                         * !!! ネストが深いのでメソッドやクラスに分割できると良いです
+                         */
                         Log.d("response get",""+response.toString());
+                        /**
+                         * !! JsonObjectRequestではなくてBooksRequestなどの
+                         * クラスを作りJsonからオブジェクトを作るところまでを隠してしまうのも良いと思われ。
+                         */
                         GotDataOfBooks gotDataOfBook = gson.fromJson(response.toString(),GotDataOfBooks.class);
                         if(gotDataOfBook.getStatus().equals("ok")){
                             int i;
@@ -244,6 +282,9 @@ public class ListViewFragment extends Fragment {
                             int nowListSize = list.size();
                             for(i=0;i<numOfData;i++)
                             {
+                                /**
+                                 * !! 一時変数でもなるべくtmpなどの意味のない変数名をつけない
+                                 */
                                 DataOfBook tmp = gotDataOfBook.getData().getDataWithLabel(i);
                                 String bookName = tmp.getTitle();
                                 String price = tmp.getPrice();
@@ -335,6 +376,10 @@ public class ListViewFragment extends Fragment {
                                         String price, String purchaseDate, int index) throws JSONException
     {
         final Gson gson = new Gson();
+        /**
+         * !!!! ローカル変数として宣言する
+         * スコープは小さく。
+         */
         tmpIndex = index;
         tmpID = ID;
         tmpTitle = bookName;
@@ -379,6 +424,11 @@ public class ListViewFragment extends Fragment {
         mQueue.start();
     }
 
+    /**
+     * !!!! 内部クラスではなく独立したクラスにしよう
+     * modelなどのパッケージを作ってそこにデータオブジェクトのクラスを放り込んだりするとよいです
+     * -> こういうデータ持ってるだけのクラスはPOJOとかBeanとかいろいろ言い方はありますが割とどうでもいいです
+     */
     private class Page
     {
         private int begin;

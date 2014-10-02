@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class PropertyViewFragment extends Fragment {
+    /**
+     * !!! 変数をsetのような動詞ではじめるのは避けよう(名詞用法が一般的な場合を除く)
+     * 遷移先がアカウント情報登録ならaccoutSetupButtonとかregistrationButtonとか
+     * ログインならloginButtonとか
+     */
     private Button setAccountButton;
 
     /*
@@ -55,6 +60,9 @@ public class PropertyViewFragment extends Fragment {
         );
     }
 
+    /**
+     * !!! setという命名の割にセットしてるようには見えないのでよくないです
+     */
     /*
      * method to move to view of account
      * */

@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+/**
+ * !!!! クラス名が動詞で始まっています
+ * なるべく名刺っぽくなるようにしましょう
+ * DataAdditionとか
+ */
 public class AddDataActivity extends DetailViewActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState)

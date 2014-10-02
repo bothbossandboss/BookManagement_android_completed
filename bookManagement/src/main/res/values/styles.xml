@@ -17,6 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     <color name="custom_theme_color">#000000</color>
+
+  <!-- !!!!! iOSみたいなのをつくろうとしない Android is Android !!!!! -->
+  <!-- まあ色をベタにかえるぐらいならAndroidもそういうデザインになってくので問題無いです -->
     <!-- iosみたいなタイトルバー -->
 	<style name="Theme.Light.iOS" parent="@android:style/Theme.Light">
         <item name="android:windowTitleSize">44dp</item>
