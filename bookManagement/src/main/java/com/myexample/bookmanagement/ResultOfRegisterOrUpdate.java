@@ -4,6 +4,9 @@ package com.myexample.bookmanagement;
  */
 import java.util.HashMap;
 
+/**
+ * !!! この辺も命名をもうすこしイカしたものにしよう
+ */
 public class ResultOfRegisterOrUpdate {
     private String status;
     private String error;

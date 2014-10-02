@@ -1,4 +1,9 @@
 package com.myexample.bookmanagement;
+
+/**
+ * !! 命名が大変よくないです
+ * BookデータのレスポンスならBooksResponseとかBooksResultとか?
+ */
 /*
  * 書籍一覧データ取得時のレスポンスを格納するクラス
  */
