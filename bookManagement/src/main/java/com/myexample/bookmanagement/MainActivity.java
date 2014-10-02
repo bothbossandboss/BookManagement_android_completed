@@ -11,20 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class MainActivity extends Activity {
-    //#define文の代わりに以下のように定義する。class外から参照する場合はclass名.~で参照。
-    public static final  int REQUEST_CODE_SAVE = 10001;
-    public static final  int REQUEST_CODE_ADD = 10002;
-    public static final  int REQUEST_CODE_SELECT_IMAGE = 10003;
-    public static final  int REQUEST_CODE_SAVE_ACCOUNT = 20001;
-    private static final String TAG = "LifeCycleMain";
-
     /*
      * method of activity's life cycle
      */
     //onCreateはアクティビティが開始される時に呼ばれるメソッド。
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG,"onCreate");
+        Log.d(MyConstants.MAIN_TAG,"onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MyTabListener<ListViewFragment> listListener = new MyTabListener<ListViewFragment>

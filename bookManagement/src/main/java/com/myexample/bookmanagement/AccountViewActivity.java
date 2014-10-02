@@ -34,7 +34,6 @@ public class AccountViewActivity extends Activity {
     private EditText passwordEditText;
     private EditText confirmEditText;
     private RequestQueue mQueue;
-    private JSONObject params;
     private String inputMailAddress;
     private String inputPassword;
 
@@ -144,7 +143,7 @@ public class AccountViewActivity extends Activity {
         String method = "account/regist";
         RequestData requestData = new RequestData(method,mailAddress,password);
         JSONObject ob = new JSONObject(gson.toJson(requestData));
-        String url = "http://"+ListViewFragment.IP_ADDRESS+":8888/cakephp/account/regist";
+        String url = MyConstants.REGISTER_ACCOUNT_URL;
         //JsonObjectRequestは、(POST/GET, url, request, response, error)の感じ。
         JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, ob,
                 new Listener<JSONObject>() {
@@ -183,7 +182,7 @@ public class AccountViewActivity extends Activity {
         String method = "account/login";
         RequestData requestData = new RequestData(method,inputMailAddress,inputPassword);
         JSONObject ob = new JSONObject(gson.toJson(requestData));
-        String url = "http://"+ListViewFragment.IP_ADDRESS+":8888/cakephp/account/login";
+        String url = MyConstants.LOGIN_ACCOUNT_URL;
         //JsonObjectRequestは、(POST/GET, url, request, response, error)の感じ。
         JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, ob,
                 new Listener<JSONObject>() {

@@ -38,10 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListViewFragment extends Fragment {
-    public static final  int FIRST_BEGIN_PAGE = 28;
-    public static final  int NUM_OF_PAGE = 10;
-    public static final String IP_ADDRESS = "10.0.1.44";
-    private static final String TAG = "LifeCycleList";
     private List<ListViewItem> list;
     private ListView listView ;
     private RequestQueue mQueue;
@@ -66,7 +62,7 @@ public class ListViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate");
+        Log.d(MyConstants.LIST_TAG, "onCreate");
         //ListViewに表示させる要素を作成する。
         list = new ArrayList<ListViewItem>();
         super.onCreateView(inflater, container, savedInstanceState);
@@ -78,7 +74,7 @@ public class ListViewFragment extends Fragment {
         adapter = new CustomListItemAdapter(getActivity(), 0, list);
         listView.setAdapter(adapter);
         try {
-            getBooksVolley("latest", FIRST_BEGIN_PAGE);
+            getBooksVolley("latest", MyConstants.FIRST_BEGIN_PAGE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -113,7 +109,7 @@ public class ListViewFragment extends Fragment {
                 intent.putExtra("position",position);
                 Log.d("intent","intent作成完了 ");
                 //遷移先から返却される識別コードを指定することで返却値を反映できる。
-                int requestCode = MainActivity.REQUEST_CODE_SAVE;
+                int requestCode = MyConstants.REQUEST_CODE_SAVE;
                 startActivityForResult(intent,requestCode);
             }
         });
@@ -144,7 +140,7 @@ public class ListViewFragment extends Fragment {
                 Log.d("addButton","tapped");
                 Intent intent = new Intent(getActivity(), AddDataActivity.class);
                 intent.putExtra("resourceID",list.size() );
-                int requestCode = MainActivity.REQUEST_CODE_ADD;
+                int requestCode = MyConstants.REQUEST_CODE_ADD;
                 startActivityForResult(intent,requestCode);
                 return true;
             case R.id.reloadButton:
@@ -171,7 +167,7 @@ public class ListViewFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
         //編集して保存する場合。
-        if(requestCode == MainActivity.REQUEST_CODE_SAVE)
+        if(requestCode == MyConstants.REQUEST_CODE_SAVE)
         {
             if(resultCode == Activity.RESULT_OK)
             {
@@ -189,7 +185,7 @@ public class ListViewFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }else if(requestCode == MainActivity.REQUEST_CODE_ADD)
+        }else if(requestCode == MyConstants.REQUEST_CODE_ADD)
         {
             //追加
             if(resultCode == Activity.RESULT_OK)
@@ -220,14 +216,14 @@ public class ListViewFragment extends Fragment {
         Account request_token = new Account(prefs.getString("user_id", ""),
                 prefs.getString("mail_address", ""),
                 prefs.getString("password",""));
-        Page page = new Page(beginPage,NUM_OF_PAGE,requestPagePosition);
+        Page page = new Page(beginPage,MyConstants.NUM_OF_PAGE,requestPagePosition);
         String method = "book/get";
         RequestGetBook requestGetBook = new RequestGetBook(method, request_token, page);
         JSONObject ob = new JSONObject(gson.toJson(requestGetBook));
         Log.d("re get",""+gson.toJson(requestGetBook));
         // Volley でリクエスト
         //mampとgenymotionの連動は、localhostをgenymotionのある端末のIPアドレスに変更させる必要あり。
-        String url = "http://"+IP_ADDRESS+":8888/cakephp/book/get";
+        String url = MyConstants.GET_BOOK_URL;
         //JsonObjectRequestは、(POST/GET, url, request, response, error)の感じ。
         JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, ob,
                 new Listener<JSONObject>() {
@@ -280,7 +276,7 @@ public class ListViewFragment extends Fragment {
                     }
                 }, new Response.ErrorListener() {
             @Override public void onErrorResponse(VolleyError error) {
-                Log.d(TAG,"error:", error);
+                Log.d(MyConstants.LIST_TAG,"error:", error);
             }}
         );
         int socketTimeout = 300;//0.3 seconds
@@ -311,7 +307,7 @@ public class ListViewFragment extends Fragment {
         JSONObject param = new JSONObject();
         param.put("method", "book/register");
         param.put("params", params);
-        String url = "http://"+IP_ADDRESS+":8888/cakephp/book/regist";
+        String url = MyConstants.REGISTER_BOOK_URL;
         JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, param,
                 new Listener<JSONObject>() {
                     @Override
@@ -324,7 +320,7 @@ public class ListViewFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                     }}, new Response.ErrorListener() {
             @Override public void onErrorResponse(VolleyError error) {
-                Log.d(TAG,"error@@@"+error);
+                Log.d(MyConstants.LIST_TAG,"error@@@"+error);
             }}
         );
         int socketTimeout = 300;//0.3 seconds
@@ -359,7 +355,7 @@ public class ListViewFragment extends Fragment {
         JSONObject param = new JSONObject();
         param.put("method", "book/update");
         param.put("params", params);
-        String url = "http://"+IP_ADDRESS+":8888/cakephp/book/update";
+        String url = MyConstants.UPDATE_BOOK_URL;
         JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, param,
                 new Listener<JSONObject>() {
                     @Override
@@ -372,7 +368,7 @@ public class ListViewFragment extends Fragment {
                         Log.d("update",""+tmpID);
                     }}, new Response.ErrorListener() {
             @Override public void onErrorResponse(VolleyError error) {
-                Log.d(TAG,"error[[["+error);
+                Log.d(MyConstants.LIST_TAG,"error[[["+error);
             }}
         );
         int socketTimeout = 300;//0.3 seconds

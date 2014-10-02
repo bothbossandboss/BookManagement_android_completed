@@ -16,14 +16,13 @@ import android.widget.Button;
 
 public class PropertyViewFragment extends Fragment {
     private Button setAccountButton;
-    private static final String TAG = "LifeCycleProperty";
 
     /*
      * method of fragment's life cycle
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG,"onCreate");
+        Log.d(MyConstants.PROPERTY_TAG,"onCreate");
         View view = inflater.inflate(R.layout.property_view, container, false);
         super.onCreateView(inflater, container, savedInstanceState);
         setAccountButton = (Button)view.findViewById(R.id.setAccountButton);
@@ -42,7 +41,7 @@ public class PropertyViewFragment extends Fragment {
     @Override
     public void onStart()
     {
-        Log.d(TAG,"onStart");
+        Log.d(MyConstants.PROPERTY_TAG,"onStart");
         super.onStart();
         SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
         String state = prefs.getString("state", "");
@@ -63,13 +62,13 @@ public class PropertyViewFragment extends Fragment {
     {
         //アカウント設定ボタンが押された時の動作
         Intent intent = new Intent(getActivity(), AccountViewActivity.class);
-        int requestCode = MainActivity.REQUEST_CODE_SAVE_ACCOUNT;
+        int requestCode = MyConstants.REQUEST_CODE_SAVE_ACCOUNT;
         startActivityForResult(intent,requestCode);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
-        if(requestCode == MainActivity.REQUEST_CODE_SAVE_ACCOUNT)
+        if(requestCode == MyConstants.REQUEST_CODE_SAVE_ACCOUNT)
         {
             if(resultCode == Activity.RESULT_OK)
             {

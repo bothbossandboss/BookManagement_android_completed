@@ -27,9 +27,6 @@ import java.util.Locale;
 
 public class DetailViewActivity extends Activity
 {
-    public static final  int IMAGE_VIEW_WIDTH = 200;
-    public static final  int IMAGE_VIEW_HEIGHT = 200;
-    private static final String TAG = "LifeCycleDetail";
     public EditText editBookName;
     public EditText editPrice;
     public EditText editDate;
@@ -48,7 +45,7 @@ public class DetailViewActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         //Log.d("detail","遷移完了");
-        Log.d(TAG, "onCreate");
+        Log.d(MyConstants.DETAIL_TAG, "onCreate");
         super.onCreate(savedInstanceState);
         //Activity起動時にすぐにキーボードが立ち上がらないようにする。
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -75,7 +72,7 @@ public class DetailViewActivity extends Activity
     @Override
     public void onStart()
     {
-        Log.d(TAG, "onStart");
+        Log.d(MyConstants.DETAIL_TAG, "onStart");
         super.onStart();
         imageView = (ImageView)findViewById(R.id.bookImageView);
         Button saveButton = (Button)findViewById(R.id.saveButton);
@@ -108,7 +105,7 @@ public class DetailViewActivity extends Activity
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_PICK);
                 //遷移先から返却される識別コードを指定することで返却値を反映できる。
-                int requestCode = MainActivity.REQUEST_CODE_SELECT_IMAGE;
+                int requestCode = MyConstants.REQUEST_CODE_SELECT_IMAGE;
                 startActivityForResult(intent,requestCode);
             }
         });
@@ -116,7 +113,7 @@ public class DetailViewActivity extends Activity
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
-        if(requestCode == MainActivity.REQUEST_CODE_SELECT_IMAGE)
+        if(requestCode == MyConstants.REQUEST_CODE_SELECT_IMAGE)
         {
             if(resultCode == Activity.RESULT_OK && intent != null)
             {
@@ -125,7 +122,7 @@ public class DetailViewActivity extends Activity
                 Log.d("image",""+uri);
                 imageUri = uri;
                 ImageController imageController = new ImageController(uri);
-                bitmap = imageController.loadImage(IMAGE_VIEW_WIDTH, IMAGE_VIEW_HEIGHT,(Activity)this);
+                bitmap = imageController.loadImage(MyConstants.IMAGE_VIEW_WIDTH, MyConstants.IMAGE_VIEW_HEIGHT,(Activity)this);
                 canvas = new Canvas(bitmap);
                 imageView.setImageBitmap(bitmap);
             }

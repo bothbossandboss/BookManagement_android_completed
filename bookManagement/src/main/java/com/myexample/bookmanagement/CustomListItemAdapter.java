@@ -28,8 +28,7 @@ public class CustomListItemAdapter  extends ArrayAdapter<ListViewItem>{
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		//convertViewがnullの場合のみ、xmlファイル指定でviewを読み込む。
-		if(convertView == null)
-		{
+		if(convertView == null){
 			convertView = layoutInflater.inflate(R.layout.custom_list_item, parent, false);
 		}
         //position行目のデータを取得する。
