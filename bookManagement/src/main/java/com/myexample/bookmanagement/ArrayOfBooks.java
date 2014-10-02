@@ -3,6 +3,15 @@ package com.myexample.bookmanagement;
  * 書籍一覧取得時の、書籍詳細データの配列を格納するクラス
  */
 public class ArrayOfBooks {
+    /**
+     * !!! なぜかこのクラスはインデントにタブが使われています
+     * フォーマッタをかけるなどしましょう
+     * 個人的にはスペースの方が好きです
+     */
+    /**
+     * あとはこの前言ったとおり鯖側でできればarrayで返ってくればarray0-9をやめてListにできるのと
+     * ArrayOfなどの命名はやめましょう
+     */
 	private int numOfBooks;
 	/*
 	private Map<String, DataOfBook> arrayOfData;

@@ -34,6 +34,11 @@ public class AccountViewActivity extends Activity {
     private EditText passwordEditText;
     private EditText confirmEditText;
     private RequestQueue mQueue;
+    /**
+     * ! 使ってない変数は削除しよう
+     * 多分IDEが教えてくれてるはず
+     */
+    private JSONObject params;
     private String inputMailAddress;
     private String inputPassword;
 
@@ -81,6 +86,9 @@ public class AccountViewActivity extends Activity {
                             e.printStackTrace();
                         }
                     }else{
+                        /**
+                         * !!!! メッセージ文言の類はリソース(R.string)として管理したほうがすっきりします
+                         */
                         String msg = "パスワードが違います";
                         showAlert(msg);
                     }
@@ -122,6 +130,9 @@ public class AccountViewActivity extends Activity {
         builder.show();
     }
 
+    /**
+     * !! 何をfinishするかよくわからないのと個人的にFinishIntentみたいな命名の方が好きです
+     */
     private void makeIntentToFinish(String user_id, String saveMailAddress, String savePassword)
     {
         Intent intent = new Intent();
@@ -137,6 +148,9 @@ public class AccountViewActivity extends Activity {
      */
     private void registerAccount(String mailAddress, String password) throws JSONException
     {
+        /**
+         * !!!! これもローカル変数にできそうです
+         */
         inputMailAddress = mailAddress;
         inputPassword = password;
         final Gson gson = new Gson();
