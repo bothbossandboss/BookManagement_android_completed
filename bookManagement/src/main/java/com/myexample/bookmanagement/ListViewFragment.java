@@ -39,7 +39,7 @@ import java.util.List;
 
 public class ListViewFragment extends Fragment {
     private List<ListViewItem> list;
-    private ListView listView ;
+    private ListView listView;
     private RequestQueue mQueue;
     private CustomListItemAdapter adapter;
     private int tmpID;
@@ -56,8 +56,8 @@ public class ListViewFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mQueue = Volley.newRequestQueue(getActivity());
-        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
-        Log.d("prefs",""+prefs.getString("user_id",""));
+        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        Log.d("prefs", "" + prefs.getString("user_id", ""));
     }
 
     @Override
@@ -84,39 +84,37 @@ public class ListViewFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("list",""+list.size());
+        Log.d("list", "" + list.size());
         //ListViewの要素(cell)がタップされた時の処理。
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListView listView = (ListView)parent;
-                ListViewItem item = (ListViewItem)listView.getItemAtPosition(position);
+                ListView listView = (ListView) parent;
+                ListViewItem item = (ListViewItem) listView.getItemAtPosition(position);
                 int ID = item.getResourceID();
                 String title = item.getBookName();
                 String price = item.getPrice();
                 String date = item.getDate();
-                Log.d("tag","ID:"+ID);
+                Log.d("tag", "ID:" + ID);
                 Log.d("name:%s", title);
                 Log.d("price:%s", price);
                 Log.d("date:%s", date);
                 //DetailViewに遷移するためのインテントを作成する。
                 Intent intent = new Intent(getActivity(), DetailViewActivity.class);
-                intent.putExtra("resourceID",ID);
-                intent.putExtra("bookName",title);
-                intent.putExtra("price",price);
-                intent.putExtra("date",date);
-                intent.putExtra("position",position);
-                Log.d("intent","intent作成完了 ");
+                intent.putExtra("resourceID", ID);
+                intent.putExtra("bookName", title);
+                intent.putExtra("price", price);
+                intent.putExtra("date", date);
+                intent.putExtra("position", position);
+                Log.d("intent", "intent作成完了 ");
                 //遷移先から返却される識別コードを指定することで返却値を反映できる。
                 int requestCode = MyConstants.REQUEST_CODE_SAVE;
-                startActivityForResult(intent,requestCode);
+                startActivityForResult(intent, requestCode);
             }
         });
     }
 
-    private void showAlert(String msg)
-    {
+    private void showAlert(String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(msg).setPositiveButton("OK", null);
         builder.show();
@@ -126,8 +124,7 @@ public class ListViewFragment extends Fragment {
      * method to control action bar
      */
     @Override
-    public void onCreateOptionsMenu(Menu menu,MenuInflater inflater)
-    {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.list_action_bar_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -137,14 +134,14 @@ public class ListViewFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.addButton:
-                Log.d("addButton","tapped");
+                Log.d("addButton", "tapped");
                 Intent intent = new Intent(getActivity(), AddDataActivity.class);
-                intent.putExtra("resourceID",list.size() );
+                intent.putExtra("resourceID", list.size());
                 int requestCode = MyConstants.REQUEST_CODE_ADD;
-                startActivityForResult(intent,requestCode);
+                startActivityForResult(intent, requestCode);
                 return true;
             case R.id.reloadButton:
-                Log.d("reloadButton","tapped");
+                Log.d("reloadButton", "tapped");
                 reloadMoreData();
                 return true;
             default:
@@ -152,9 +149,8 @@ public class ListViewFragment extends Fragment {
         }
     }
 
-    private void reloadMoreData()
-    {
-        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
+    private void reloadMoreData() {
+        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         int numOfBooks = prefs.getInt("numOfBooks", 0);
         int beginPage = numOfBooks - list.size();
         try {
@@ -164,43 +160,34 @@ public class ListViewFragment extends Fragment {
         }
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //編集して保存する場合。
-        if(requestCode == MyConstants.REQUEST_CODE_SAVE)
-        {
-            if(resultCode == Activity.RESULT_OK)
-            {
-                super.onActivityResult(requestCode, resultCode, intent);
-                int resourceID = intent.getIntExtra("ID", 0);
-                int index = intent.getIntExtra("index", 0);
-                String saveTitle = intent.getStringExtra("bookName");
-                String savePrice = intent.getStringExtra("price");
-                String saveDate = intent.getStringExtra("date");
-                String saveUriString = intent.getStringExtra("imageURI");
-                //Uri imageUri = Uri.parse(saveUriString);
-                try {
-                    updateEditedDataOfBook(resourceID, saveTitle, savePrice, saveDate, index);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        if (requestCode == MyConstants.REQUEST_CODE_SAVE && resultCode == Activity.RESULT_OK) {
+            super.onActivityResult(requestCode, resultCode, intent);
+            int resourceID = intent.getIntExtra("ID", 0);
+            int index = intent.getIntExtra("index", 0);
+            String saveTitle = intent.getStringExtra("bookName");
+            String savePrice = intent.getStringExtra("price");
+            String saveDate = intent.getStringExtra("date");
+            String saveUriString = intent.getStringExtra("imageURI");
+            //Uri imageUri = Uri.parse(saveUriString);
+            try {
+                updateEditedDataOfBook(resourceID, saveTitle, savePrice, saveDate, index);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }else if(requestCode == MyConstants.REQUEST_CODE_ADD)
-        {
+        } else if (requestCode == MyConstants.REQUEST_CODE_ADD && resultCode == Activity.RESULT_OK) {
             //追加
-            if(resultCode == Activity.RESULT_OK)
-            {
-                super.onActivityResult(requestCode, resultCode, intent);
-                String addTitle = intent.getStringExtra("bookName");
-                String addPrice = intent.getStringExtra("price");
-                String addDate = intent.getStringExtra("date");
-                String addUriString = intent.getStringExtra("imageURI");
-                //Uri imageUri = Uri.parse(addUriString);
-                try {
-                    registerEditedDataOfBook(addTitle, addPrice, addDate);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            super.onActivityResult(requestCode, resultCode, intent);
+            String addTitle = intent.getStringExtra("bookName");
+            String addPrice = intent.getStringExtra("price");
+            String addDate = intent.getStringExtra("date");
+            String addUriString = intent.getStringExtra("imageURI");
+            //Uri imageUri = Uri.parse(addUriString);
+            try {
+                registerEditedDataOfBook(addTitle, addPrice, addDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -212,60 +199,58 @@ public class ListViewFragment extends Fragment {
     private void getBooksVolley(String requestPagePosition, int beginPage) throws JSONException {
         isThisFirstGet = requestPagePosition;
         final Gson gson = new Gson();
-        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         Account request_token = new Account(prefs.getString("user_id", ""),
                 prefs.getString("mail_address", ""),
-                prefs.getString("password",""));
-        Page page = new Page(beginPage,MyConstants.NUM_OF_PAGE,requestPagePosition);
+                prefs.getString("password", ""));
+        Page page = new Page(beginPage, MyConstants.NUM_OF_PAGE, requestPagePosition);
         String method = "book/get";
         RequestGetBook requestGetBook = new RequestGetBook(method, request_token, page);
         JSONObject ob = new JSONObject(gson.toJson(requestGetBook));
-        Log.d("re get",""+gson.toJson(requestGetBook));
+        Log.d("re get", "" + gson.toJson(requestGetBook));
         // Volley でリクエスト
         //mampとgenymotionの連動は、localhostをgenymotionのある端末のIPアドレスに変更させる必要あり。
         String url = MyConstants.GET_BOOK_URL;
         //JsonObjectRequestは、(POST/GET, url, request, response, error)の感じ。
-        JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, ob,
+        JsonObjectRequest request = new JsonObjectRequest(Method.POST, url, ob,
                 new Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("response get",""+response.toString());
-                        GotDataOfBooks gotDataOfBook = gson.fromJson(response.toString(),GotDataOfBooks.class);
-                        if(gotDataOfBook.getStatus().equals("ok")){
+                        Log.d("response get", "" + response.toString());
+                        GotDataOfBooks gotDataOfBook = gson.fromJson(response.toString(), GotDataOfBooks.class);
+                        if (gotDataOfBook.getStatus().equals("ok")) {
                             int i;
                             int numOfData = gotDataOfBook.getData().getNumOfData();
-                            if(numOfData == 0)
-                            {
+                            if (numOfData == 0) {
                                 //データベースにデータが無いとき
                                 Log.d("getData", "end data");
                                 String msg = "これ以上の登録書籍はありません";
                                 showAlert(msg);
                             }
                             int nowListSize = list.size();
-                            for(i=0;i<numOfData;i++)
-                            {
+                            for (i = 0; i < numOfData; i++) {
                                 DataOfBook tmp = gotDataOfBook.getData().getDataWithLabel(i);
                                 String bookName = tmp.getTitle();
                                 String price = tmp.getPrice();
                                 String date = tmp.getDate();
                                 int resourceID = tmp.getBookId();
-                                System.out.println(resourceID+":"+"name:"+bookName+"price:"+price+"date:"+date);
-                                if(isThisFirstGet.equals("latest")){
-                                    list.add(i, new ListViewItem(resourceID, bookName, price, date) );
-                                }else{
-                                    list.add(i+nowListSize, new ListViewItem(resourceID, bookName, price, date) );
-                                    Log.d("get", ""+ list.size());
+                                System.out.println(resourceID + ":" + "name:" + bookName + "price:" + price + "date:" + date);
+                                if (isThisFirstGet.equals("latest")) {
+                                    list.add(i, new ListViewItem(resourceID, bookName, price, date));
+                                } else {
+                                    list.add(i + nowListSize, new ListViewItem(resourceID, bookName, price, date));
+                                    Log.d("get", "" + list.size());
                                 }
                             }
-                            Log.d("get size", ""+list.size());
-                            SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
+                            Log.d("get size", "" + list.size());
+                            SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putInt("numOfBooks", gotDataOfBook.getData().getNumOfBooks());
                             editor.apply();
                             adapter.notifyDataSetChanged();
 
-                        }else{
-                            System.out.println("error:"+gotDataOfBook.getError());
+                        } else {
+                            System.out.println("error:" + gotDataOfBook.getError());
                             list = new ArrayList<ListViewItem>();
                             adapter = new CustomListItemAdapter(getActivity(), 0, list);
                             listView.setAdapter(adapter);
@@ -275,9 +260,11 @@ public class ListViewFragment extends Fragment {
                         }
                     }
                 }, new Response.ErrorListener() {
-            @Override public void onErrorResponse(VolleyError error) {
-                Log.d(MyConstants.LIST_TAG,"error:", error);
-            }}
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(MyConstants.LIST_TAG, "error:", error);
+            }
+        }
         );
         int socketTimeout = 300;//0.3 seconds
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
@@ -287,41 +274,43 @@ public class ListViewFragment extends Fragment {
         mQueue.start();
     }
 
-    private void registerEditedDataOfBook(String bookName, String price, String purchaseDate) throws JSONException
-    {
+    private void registerEditedDataOfBook(String bookName, String price, String purchaseDate) throws JSONException {
         final Gson gson = new Gson();
         tmpTitle = bookName;
         tmpPrice = price;
         tmpDate = purchaseDate;
-        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         JSONObject requestToken = new JSONObject();
         requestToken.put("user_id", prefs.getString("user_id", ""));
         requestToken.put("mail_address", prefs.getString("mail_address", ""));
-        requestToken.put("password", prefs.getString("password",""));
+        requestToken.put("password", prefs.getString("password", ""));
         JSONObject params = new JSONObject();
-        params.put("request_token",requestToken);
-        params.put("book_name",bookName);
-        params.put("price",price);
-        params.put("purchase_date",purchaseDate);
-        params.put("image","no image");
+        params.put("request_token", requestToken);
+        params.put("book_name", bookName);
+        params.put("price", price);
+        params.put("purchase_date", purchaseDate);
+        params.put("image", "no image");
         JSONObject param = new JSONObject();
         param.put("method", "book/register");
         param.put("params", params);
         String url = MyConstants.REGISTER_BOOK_URL;
-        JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, param,
+        JsonObjectRequest request = new JsonObjectRequest(Method.POST, url, param,
                 new Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(),ResultOfRegisterOrUpdate.class);
+                        ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(), ResultOfRegisterOrUpdate.class);
                         String tmp = resultData.getBookId();
                         tmpID = Integer.parseInt(tmp);
-                        list.add(0,new ListViewItem(tmpID,tmpTitle,tmpPrice,tmpDate));
-                        Log.d("register",""+tmpID);
+                        list.add(0, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate));
+                        Log.d("register", "" + tmpID);
                         adapter.notifyDataSetChanged();
-                    }}, new Response.ErrorListener() {
-            @Override public void onErrorResponse(VolleyError error) {
-                Log.d(MyConstants.LIST_TAG,"error@@@"+error);
-            }}
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(MyConstants.LIST_TAG, "error@@@" + error);
+            }
+        }
         );
         int socketTimeout = 300;//0.3 seconds
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
@@ -331,45 +320,47 @@ public class ListViewFragment extends Fragment {
         mQueue.start();
     }
 
-    private void updateEditedDataOfBook(int ID,String bookName,
-                                        String price, String purchaseDate, int index) throws JSONException
-    {
+    private void updateEditedDataOfBook(int ID, String bookName,
+                                        String price, String purchaseDate, int index) throws JSONException {
         final Gson gson = new Gson();
         tmpIndex = index;
         tmpID = ID;
         tmpTitle = bookName;
         tmpPrice = price;
         tmpDate = purchaseDate;
-        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         JSONObject requestToken = new JSONObject();
         requestToken.put("user_id", prefs.getString("user_id", ""));
         requestToken.put("mail_address", prefs.getString("mail_address", ""));
-        requestToken.put("password", prefs.getString("password",""));
+        requestToken.put("password", prefs.getString("password", ""));
         JSONObject params = new JSONObject();
-        params.put("request_token",requestToken);
+        params.put("request_token", requestToken);
         params.put("book_id", ID);
-        params.put("book_name",bookName);
-        params.put("price",price);
-        params.put("purchase_date",purchaseDate);
-        params.put("image","no image");
+        params.put("book_name", bookName);
+        params.put("price", price);
+        params.put("purchase_date", purchaseDate);
+        params.put("image", "no image");
         JSONObject param = new JSONObject();
         param.put("method", "book/update");
         param.put("params", params);
         String url = MyConstants.UPDATE_BOOK_URL;
-        JsonObjectRequest  request = new JsonObjectRequest(Method.POST, url, param,
+        JsonObjectRequest request = new JsonObjectRequest(Method.POST, url, param,
                 new Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(),ResultOfRegisterOrUpdate.class);
+                        ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(), ResultOfRegisterOrUpdate.class);
                         String tmp = resultData.getBookId();
                         tmpID = Integer.parseInt(tmp);
-                        list.set(tmpIndex,new ListViewItem(tmpID,tmpTitle,tmpPrice,tmpDate));
+                        list.set(tmpIndex, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate));
                         adapter.notifyDataSetChanged();
-                        Log.d("update",""+tmpID);
-                    }}, new Response.ErrorListener() {
-            @Override public void onErrorResponse(VolleyError error) {
-                Log.d(MyConstants.LIST_TAG,"error[[["+error);
-            }}
+                        Log.d("update", "" + tmpID);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(MyConstants.LIST_TAG, "error[[[" + error);
+            }
+        }
         );
         int socketTimeout = 300;//0.3 seconds
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
@@ -379,77 +370,64 @@ public class ListViewFragment extends Fragment {
         mQueue.start();
     }
 
-    private class Page
-    {
+    private class Page {
         private int begin;
         private int numOfPage;
         private String position;
 
-        public Page(int mbegin, int mnumOfPage, String mposition)
-        {
+        public Page(int mbegin, int mnumOfPage, String mposition) {
             this.begin = mbegin;
             this.numOfPage = mnumOfPage;
             this.position = mposition;
         }
 
-        public int getBegin()
-        {
-            return  begin;
+        public int getBegin() {
+            return begin;
         }
 
-        public int getNumOfPage()
-        {
+        public int getNumOfPage() {
             return numOfPage;
         }
 
-        public String getPosition()
-        {
+        public String getPosition() {
             return position;
         }
     }
 
-    private class GetParams
-    {
+    private class GetParams {
         private Account request_token;
         private Page page;
 
-        public GetParams(Account maccount, Page mpage)
-        {
+        public GetParams(Account maccount, Page mpage) {
             this.request_token = maccount;
             this.page = mpage;
         }
 
-        public Account getRequest_token()
-        {
+        public Account getRequest_token() {
             return request_token;
         }
 
-        public Page getPage()
-        {
+        public Page getPage() {
             return page;
         }
     }
 
 
-    private class RequestGetBook
-    {
+    private class RequestGetBook {
         private String method;
         private GetParams params;
 
-        public RequestGetBook(String mmthod, Account maccount, Page mpage)
-        {
+        public RequestGetBook(String mmthod, Account maccount, Page mpage) {
             this.method = mmthod;
-            this.params = new GetParams(maccount,mpage);
+            this.params = new GetParams(maccount, mpage);
         }
 
-        public String getMethod()
-        {
+        public String getMethod() {
             return method;
         }
 
 
-        public GetParams getParams()
-        {
+        public GetParams getParams() {
             return params;
         }
     }
