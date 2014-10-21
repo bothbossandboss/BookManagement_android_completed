@@ -3,6 +3,7 @@ package com.myexample.bookmanagement;
  * 書籍詳細画面における書籍の画像を管理するクラス
  */
 import android.app.Activity;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 
 public class ImageController{
     private Uri imageUri;
+    private boolean flag;
 
     public ImageController(Uri uri)
     {
@@ -27,25 +29,36 @@ public class ImageController{
         // URIから画像を読み込みBitmapを作成
         Bitmap originalBitmap = null;
         try {
+            flag = true;
             //originalBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
             InputStream in = ac.getContentResolver().openInputStream(imageUri);
             originalBitmap = BitmapFactory.decodeStream(in);
             in.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            flag = false;
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inMutable = true;
+            Resources res = ac.getResources();
+            originalBitmap = BitmapFactory.decodeResource(res, R.drawable.no_image, options);
+            //e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         // MediaStoreから回転情報を取得
         final int orientation;
-        Cursor cursor = MediaStore.Images.Media.query(ac.getContentResolver(), imageUri, new String[] {
-                MediaStore.Images.ImageColumns.ORIENTATION
-        });
-        if (cursor != null) {
-            cursor.moveToFirst();
-            orientation = cursor.getInt(0);
-        } else {
+        if(flag) {
+            Cursor cursor = MediaStore.Images.Media.query(ac.getContentResolver(), imageUri, new String[]{
+                    MediaStore.Images.ImageColumns.ORIENTATION
+            });
+            if (cursor != null) {
+                cursor.moveToFirst();
+                orientation = cursor.getInt(0);
+                cursor.close();
+            } else {
+                orientation = 0;
+            }
+        }else{
             orientation = 0;
         }
 

@@ -6,7 +6,8 @@ task assemble {
 
 buildscript {
     repositories {
-        jcenter()
+        //jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.2'

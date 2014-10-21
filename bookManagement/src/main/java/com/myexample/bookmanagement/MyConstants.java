@@ -29,6 +29,9 @@ public class MyConstants {
 
     //私のパソコンのIPアドレス
     public static final String IP_ADDRESS = "10.0.1.44";
+    //自宅環境
+    //public static final String IP_ADDRESS = "192.168.0.8";
+
 
     //データベースとのやり取りにおけるURL
     public static final String GET_BOOK_URL = "http://"+IP_ADDRESS+":8888/cakephp/book/get";
@@ -36,4 +39,5 @@ public class MyConstants {
     public static final String UPDATE_BOOK_URL = "http://"+IP_ADDRESS+":8888/cakephp/book/update";
     public static final String REGISTER_ACCOUNT_URL = "http://"+IP_ADDRESS+":8888/cakephp/account/regist";
     public static final String LOGIN_ACCOUNT_URL = "http://"+IP_ADDRESS+":8888/cakephp/account/login";
+    public static final String UPLOAD_IMAGE_URL = "http://"+IP_ADDRESS+":8888/cakephp/book/upload_image";
 }

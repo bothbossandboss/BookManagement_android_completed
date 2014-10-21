@@ -46,6 +46,7 @@ public class ListViewFragment extends Fragment {
     private String tmpTitle;
     private String tmpPrice;
     private String tmpDate;
+    private String tmpUri;
     private int tmpIndex;
     private String isThisFirstGet;
 
@@ -105,6 +106,7 @@ public class ListViewFragment extends Fragment {
                 intent.putExtra("bookName", title);
                 intent.putExtra("price", price);
                 intent.putExtra("date", date);
+                intent.putExtra("imageUri",item.getImageUri());
                 intent.putExtra("position", position);
                 Log.d("intent", "intent作成完了 ");
                 //遷移先から返却される識別コードを指定することで返却値を反映できる。
@@ -137,6 +139,7 @@ public class ListViewFragment extends Fragment {
                 Log.d("addButton", "tapped");
                 Intent intent = new Intent(getActivity(), AddDataActivity.class);
                 intent.putExtra("resourceID", list.size());
+                intent.putExtra("imageUri","no image");
                 int requestCode = MyConstants.REQUEST_CODE_ADD;
                 startActivityForResult(intent, requestCode);
                 return true;
@@ -170,9 +173,9 @@ public class ListViewFragment extends Fragment {
             String savePrice = intent.getStringExtra("price");
             String saveDate = intent.getStringExtra("date");
             String saveUriString = intent.getStringExtra("imageURI");
-            //Uri imageUri = Uri.parse(saveUriString);
+            Log.d("saveImageUri",""+saveUriString);
             try {
-                updateEditedDataOfBook(resourceID, saveTitle, savePrice, saveDate, index);
+                updateEditedDataOfBook(resourceID, saveTitle, savePrice, saveDate, saveUriString,index);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -183,9 +186,10 @@ public class ListViewFragment extends Fragment {
             String addPrice = intent.getStringExtra("price");
             String addDate = intent.getStringExtra("date");
             String addUriString = intent.getStringExtra("imageURI");
+            Log.d("addImageUri",""+addUriString);
             //Uri imageUri = Uri.parse(addUriString);
             try {
-                registerEditedDataOfBook(addTitle, addPrice, addDate);
+                registerEditedDataOfBook(addTitle, addPrice, addDate, addUriString);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -233,12 +237,13 @@ public class ListViewFragment extends Fragment {
                                 String bookName = tmp.getTitle();
                                 String price = tmp.getPrice();
                                 String date = tmp.getDate();
+                                String imageUri = tmp.getImageUrl();
                                 int resourceID = tmp.getBookId();
                                 System.out.println(resourceID + ":" + "name:" + bookName + "price:" + price + "date:" + date);
                                 if (isThisFirstGet.equals("latest")) {
-                                    list.add(i, new ListViewItem(resourceID, bookName, price, date));
+                                    list.add(i, new ListViewItem(resourceID, bookName, price, date, imageUri));
                                 } else {
-                                    list.add(i + nowListSize, new ListViewItem(resourceID, bookName, price, date));
+                                    list.add(i + nowListSize, new ListViewItem(resourceID, bookName, price, date, imageUri));
                                     Log.d("get", "" + list.size());
                                 }
                             }
@@ -274,11 +279,13 @@ public class ListViewFragment extends Fragment {
         mQueue.start();
     }
 
-    private void registerEditedDataOfBook(String bookName, String price, String purchaseDate) throws JSONException {
+    private void registerEditedDataOfBook(String bookName, String price,
+                                          String purchaseDate, String imageUri) throws JSONException {
         final Gson gson = new Gson();
         tmpTitle = bookName;
         tmpPrice = price;
         tmpDate = purchaseDate;
+        tmpUri = imageUri;
         SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         JSONObject requestToken = new JSONObject();
         requestToken.put("user_id", prefs.getString("user_id", ""));
@@ -289,7 +296,7 @@ public class ListViewFragment extends Fragment {
         params.put("book_name", bookName);
         params.put("price", price);
         params.put("purchase_date", purchaseDate);
-        params.put("image", "no image");
+        params.put("image", imageUri);
         JSONObject param = new JSONObject();
         param.put("method", "book/register");
         param.put("params", params);
@@ -301,7 +308,7 @@ public class ListViewFragment extends Fragment {
                         ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(), ResultOfRegisterOrUpdate.class);
                         String tmp = resultData.getBookId();
                         tmpID = Integer.parseInt(tmp);
-                        list.add(0, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate));
+                        list.add(0, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate, tmpUri));
                         Log.d("register", "" + tmpID);
                         adapter.notifyDataSetChanged();
                     }
@@ -321,13 +328,14 @@ public class ListViewFragment extends Fragment {
     }
 
     private void updateEditedDataOfBook(int ID, String bookName,
-                                        String price, String purchaseDate, int index) throws JSONException {
+                                        String price, String purchaseDate, String imageUri, int index) throws JSONException {
         final Gson gson = new Gson();
         tmpIndex = index;
         tmpID = ID;
         tmpTitle = bookName;
         tmpPrice = price;
         tmpDate = purchaseDate;
+        tmpUri = imageUri;
         SharedPreferences prefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         JSONObject requestToken = new JSONObject();
         requestToken.put("user_id", prefs.getString("user_id", ""));
@@ -339,7 +347,7 @@ public class ListViewFragment extends Fragment {
         params.put("book_name", bookName);
         params.put("price", price);
         params.put("purchase_date", purchaseDate);
-        params.put("image", "no image");
+        params.put("image", imageUri);
         JSONObject param = new JSONObject();
         param.put("method", "book/update");
         param.put("params", params);
@@ -351,7 +359,7 @@ public class ListViewFragment extends Fragment {
                         ResultOfRegisterOrUpdate resultData = gson.fromJson(response.toString(), ResultOfRegisterOrUpdate.class);
                         String tmp = resultData.getBookId();
                         tmpID = Integer.parseInt(tmp);
-                        list.set(tmpIndex, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate));
+                        list.set(tmpIndex, new ListViewItem(tmpID, tmpTitle, tmpPrice, tmpDate, tmpUri));
                         adapter.notifyDataSetChanged();
                         Log.d("update", "" + tmpID);
                     }
@@ -431,5 +439,4 @@ public class ListViewFragment extends Fragment {
             return params;
         }
     }
-
 }

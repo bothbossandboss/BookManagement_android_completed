@@ -8,13 +8,16 @@ public class ListViewItem
     private String bookName;
     private String price;
     private String date;
-    //画像はとりあえず考慮しない
-    public ListViewItem(int constructorID, String constructorBookName, String constructorPrice, String constructorDate)
+    private String imageUri;
+
+    public ListViewItem(int constructorID, String constructorBookName, String constructorPrice,
+                        String constructorDate, String constructorUri)
     {
         this.resourceID = constructorID;
         this.bookName = constructorBookName;
         this.price = constructorPrice;
         this.date = constructorDate;
+        this.imageUri = constructorUri;
     }
 
     public int getResourceID()
@@ -32,6 +35,9 @@ public class ListViewItem
     public String getDate()
     {
         return date;
+    }
+    public String getImageUri(){
+        return imageUri;
     }
 }
 
